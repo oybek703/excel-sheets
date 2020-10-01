@@ -1,6 +1,13 @@
 @import '~normalize.css';
-$color:red;
+@import "variables";
+@import "mixins";
+@import "excel/header";
+@import "excel/formula";
+@import "excel/toolbar";
+@import "excel/table";
+@import "dashboard/dashboard";
 @import "../assets/fonts/Oswald.css";
 body{
   font-family: 'Oswald-Regular', sans-serif;
+  color: $textcolor;
 }

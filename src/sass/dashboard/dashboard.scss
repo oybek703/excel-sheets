@@ -1,0 +1,70 @@
+@import "../variables";
+@import "../mixins";
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  background: #eeee;
+  min-height: 100vh;
+  &__header{
+    text-align: center;
+  }
+  &__new{
+    padding:2.5rem;
+    background: #80808085;
+    display: flex;
+    padding-left: 10%;
+  }
+  &__view{
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    min-width: 120px;
+    min-height: 120px;
+    &:hover{
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  }
+  &__create{
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 1.2em;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  &__table{
+    max-width: 60%;
+    width: 80%;
+    margin: 20px auto;
+  }
+  &__list-header{
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+  }
+  &__record{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 80px;
+    margin-bottom: 15px;
+    transition: all .3s ease;
+    &:hover{
+      background: $activecolor;
+      cursor: pointer;
+    }
+    a{
+      text-decoration: none;
+      color: #333;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+}

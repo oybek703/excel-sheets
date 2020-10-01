@@ -1,0 +1,45 @@
+@import "../variables";
+@import "../mixins";
+.excel__table{
+  @include borderBottom;
+  overflow:auto;
+  .table{
+    @include borderBottom;
+    background: $hovercolor;
+    &__row{
+      display: flex;
+      border: 1px solid $formulacolor;
+      border-bottom: 0;
+      border-top: 0;
+    }
+    &__col{
+      border: 1px solid $formulacolor;
+      min-width: 58px;
+      text-align: center;
+      padding: 2px 5px;
+      border-left: 0;
+      border-top: 0;
+      background: $tablecolor;
+    }
+    &__row-info{
+      min-width: 58px;
+      padding: 2px 5px;
+      border: 1px solid $formulacolor;
+      text-align: center;
+      border-top: 0;
+      border-left: 0;
+      background: $tablecolor;
+    }
+    &__row-data{
+      display: flex;
+    }
+    &__cell{
+      @include reset;
+      min-width: 58px;
+      border: 1px solid $formulacolor;
+      padding: 2px 5px;
+      border-top: 0;
+      border-left: 0;
+    }
+  }
+}

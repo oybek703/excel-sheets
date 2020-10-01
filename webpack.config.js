@@ -1,9 +1,10 @@
 const path=require('path');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
-const {CleanWebpackPlugin}=require('clean-webpack-plugin');
+const {CleanWebpackPlugin}=require('clean-webpack-plugin')
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 const CssMinimizerPlugin=require('css-minimizer-webpack-plugin');
 const TerserPlugin=require('terser-webpack-plugin');
+const CopyWebpackPlugin=require('copy-webpack-plugin');
 console.log('NODE_ENV:', process.env.NODE_ENV);
 const isDev=process.env.NODE_ENV==='development';
 const isProd=!isDev;
@@ -26,7 +27,7 @@ module.exports={
   context: path.resolve(__dirname, 'src'),
   entry: './index.js',
   output: {
-    filename: '[bundle].[hash:4].js',
+    filename: 'bundle.[hash:4].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
@@ -42,6 +43,14 @@ module.exports={
     new MiniCssExtractPlugin({
       filename: 'bundle.[hash:4].css',
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/assets/fontawesome/all.min.js'),
+          to: path.resolve(__dirname, 'dist/')
+        }
+      ]
+    })
   ],
   module: {
     rules: [
