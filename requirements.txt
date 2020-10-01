@@ -1,0 +1,14 @@
+Webpack(including dev-server)
+        Babel
+        Scss
+        Eslint
+        2 modes
+            Development
+                Sourmaps,Not minified JS,CSS
+            Production
+                 Minified files
+Git
+    Production
+        -------------
+     Development
+        ----------------
