@@ -1,0 +1,25 @@
+@mixin boxSizer($padding:5px 20px,$margin:0) {
+  box-sizing: border-box;
+  padding:$padding;
+  margin: $margin;
+}
+@mixin btnHover(){
+  border-radius: 4px;
+  &:hover{
+    cursor: pointer;
+    background: $hovercolor;
+  }
+  &:active{
+    background: $activecolor;
+    color: green;
+  }
+}
+@mixin borderBottom(){
+  border-bottom: 1px solid $bordercolor;
+}
+@mixin reset(){
+  outline: none;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+}

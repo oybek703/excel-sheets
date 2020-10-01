@@ -1,0 +1,15 @@
+@import "../variables";
+@import "../mixins";
+.excel__toolbar{
+  @include boxSizer(5px 10px);
+  @include borderBottom;
+  display: flex;
+  justify-content: left;
+  &>span{
+    flex: 30px 0 0;
+    @include btnHover;
+    @include boxSizer(4px);
+    align-content: center;
+    text-align: center;
+  }
+}

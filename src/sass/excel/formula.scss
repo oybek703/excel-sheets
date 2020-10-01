@@ -1,0 +1,24 @@
+@import "../variables";
+@import "../mixins";
+.excel__formula{
+  @include borderBottom;
+  display: flex;
+  justify-content: left;
+  .formula{
+    &__sign{
+      @include boxSizer(5px 10px);
+      flex: 70px 0 0;
+      text-align: center;
+      color: $formulacolor;
+      font-style: italic;
+      font-size: 1.2em;
+      border-right: 2px solid $hovercolor;
+    }
+    &__input{
+      @include boxSizer(0 10px);
+      margin-top:6px;
+      @include reset;
+      flex: 90% 0 0;
+    }
+  }
+}

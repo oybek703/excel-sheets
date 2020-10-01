@@ -1,0 +1,21 @@
+@import "../variables";
+@import "../mixins";
+.excel__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include boxSizer;
+  @include borderBottom;
+  .header{
+    &__title{
+      font-size: 1.2em;
+      width: 40%;
+      @include boxSizer(5px);
+      font-size: 1.6rem;
+    }
+    &__buttons span{
+        @include boxSizer(0px 5px);
+        @include btnHover;
+    }
+  }
+}
