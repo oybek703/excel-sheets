@@ -14,7 +14,7 @@
       font-size: 1.6rem;
     }
     &__buttons span{
-        @include boxSizer(0px 5px);
+        @include boxSizer(2px 7px);
         @include btnHover;
     }
   }
