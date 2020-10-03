@@ -24,7 +24,7 @@
     }
     &__col{
       border: 1px solid $formulacolor;
-      min-width: 58px;
+      min-width: 74px;
       text-align: center;
       padding: 2px 5px;
       border-left: 0;
@@ -42,7 +42,7 @@
       }
     }
     &__row-info{
-      min-width: 58px;
+      min-width: 74px;
       padding: 2px 5px;
       border: 1px solid $formulacolor;
       text-align: center;
@@ -65,13 +65,14 @@
     }
     &__cell{
       @include reset;
-      min-width: 58px;
+      min-width: 74px;
       border: 1px solid $formulacolor;
       padding: 2px 5px;
       border-top: 0;
       border-left: 0;
       &.selected{
         outline: 2px solid $resizecolor !important;
+        box-shadow: 0px -1px 10px 1px #1718ff80;
       }
     }
   }

@@ -26,9 +26,9 @@ function createCol(_,index) {
             </div>
     `
 }
-function createCell(_,index) {
+function createCell(col,row) {
     return `
-        <div class="table__cell" contenteditable data-col="${index}"></div>
+        <div class="table__cell" spellcheck="false" contenteditable data-col="${col}" data-id="${col}:${row}"></div>
     `
 }
 function getFromCharCode(index) {
@@ -43,10 +43,10 @@ export function createTable(rowsCount=10) {
         .map(createCol)
         .join('')
     rows.push(createRow(cols))
-    const cells=new Array(colsCount)
-        .fill('')
-        .map(createCell).join('')
     for(let row=0;row<rowsCount;row++){
+        const cells=new Array(colsCount)
+            .fill('')
+            .map((_,col)=>createCell(col,row)).join('')
         rows.push(createRow(cells,row+1))
     }
     return rows.join('')
