@@ -40,6 +40,29 @@ class Dom {
     getAll(selector){
         return this.$el.querySelectorAll(selector)
     }
+    addClass(cls){
+        this.$el.classList.add(cls)
+    }
+    removeClass(cls){
+        this.$el.classList.remove(cls)
+    }
+    find(selector){
+        return this.$el.querySelector(selector)
+    }
+    focus(){
+        this.$el.focus()
+        return this
+    }
+    text(text){
+        if(typeof text==='string'){
+            this.$el.textContent=text
+            return this
+        }
+        if(this.$el.tagName.toLocaleLowerCase()==='input'){
+            return this.$el.value.trim()
+        }
+        return  this.$el.textContent.trim()
+    }
 }
 export function $(selector) {
     return new Dom(selector)

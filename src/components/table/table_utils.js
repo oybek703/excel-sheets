@@ -1,12 +1,47 @@
 import {$} from "@core/dom";
+import {range} from "@core/utils";
 function getSize(width){
     return `${width}px`
 }
 export function shouldResize(event) {
     return $(event.target).dataset.type
 }
+export function isCell(event) {
+    return $(event.target).dataset.id
+}
+export function shouldSelectGroup(event) {
+    return event.shiftKey
+}
+export function matrix(selectedCell,currentCell,root) {
+    const cols=range(currentCell.col,selectedCell.col)
+    const rows=range(currentCell.row,selectedCell.row)
+    return cols.reduce((acc,col)=>{
+        rows.forEach(row=>{
+            const el=$(root).find(`[data-id="${col}:${row}"]`)
+            acc.push(el)
+        })
+        return acc
+    },[])
+}
+export function shouldNavigate(event) {
+    const keys=['Enter','Tab','ArrowDown','ArrowRight','ArrowLeft','ArrowUp']
+    const {key}=event
+    return keys.includes(key)
+}
+export function navigate(key,{col,row}) {
+    if (key === 'Enter' || key==='ArrowDown') {
+        row++
+    } else if (key === 'ArrowRight'|| key==='Tab') {
+        col++
+    } else if (key === 'ArrowUp') {
+        row--
+    } else if (key === 'ArrowLeft') {
+        col--
+    }
+    return `${col}:${row}`
+}
 export function handleResize(event,root) {
-    let newSize,delta,width,height
+    let newSize,delta,newWidth,newHeight
     const resizeType=$(event.target).dataset.resize
     const resizer=$(event.target)
     const parent=$(event.target).closest('[data-resizer]')
@@ -16,14 +51,14 @@ export function handleResize(event,root) {
     document.onmousemove=(e)=>{
         if(resizeType==='col'){
             delta=e.pageX-coords.right
-            width=coords.width
-            newSize=getSize(delta+width)
+            newWidth=coords.width
+            newSize=getSize(delta+newWidth)
             resizer.css({height:'100vh',right:-delta})
         }
         else {
             delta = e.pageY - coords.bottom
-            height = coords.height
-            newSize =getSize(height+delta)
+            newHeight = coords.height
+            newSize =getSize(newHeight+delta)
             resizer.css({width:'100vw',bottom:-delta})
         }
     }
