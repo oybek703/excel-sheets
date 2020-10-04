@@ -1,4 +1,4 @@
-import {camel, camelToDash, parseText, toInlineStyles} from "@core/utils";
+import {parseText, toInlineStyles} from "@core/utils";
 import {defaultStyles} from "@/constants";
 
 const CODES={

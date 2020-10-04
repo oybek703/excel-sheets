@@ -1,6 +1,4 @@
 import {applystyles, changestyles, changetext, changetitle, tableresize} from "@/redux/types";
-import {camelToDash} from "@core/utils";
-
 export function rootReducer(state,action) {
     let prevState
      switch (action.type) {
