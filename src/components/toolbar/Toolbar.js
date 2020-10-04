@@ -1,22 +1,37 @@
-import {ExcelComponent} from "@core/ExcelComponent";
+import {createToolbar} from "@/components/toolbar/toolbar_template";
+import {$} from "@core/dom";
+import {ExcelStateComponent} from "@core/ExcelStateComponent";
+import {defaultStyles} from "@/constants";
 
-export class Toolbar extends ExcelComponent{
+export class Toolbar extends ExcelStateComponent{
     static className='excel__toolbar toolbar'
     constructor(root,options){
         super(root,{
             name:'Toolbar',
-            listeners:[],
+            listeners:['click'],
+            subscribe:['currentStyles'],
             ...options
         })
     }
+    get template() {
+        return createToolbar(this.state)
+    }
+    prepare() {
+        this.initState(defaultStyles)
+    }
+    storeChanged(changes) {
+        this.setState(changes.currentStyles)
+    }
+
     toHTML() {
-        return  `
-            <span><i class="fas fa-align-left"></i></span>
-            <span><i class="fas fa-align-right"></i></span>
-            <span><i class="fas fa-align-center"></i></span>
-            <span><i class="fas fa-bold"></i></span>
-            <span><i class="fas fa-italic"></i></span>
-            <span><i class="fas fa-underline"></i></span>
-        `
+        return this.template
+    }
+
+    onClick(event){
+        const target=$(event.target).closest('[data-type="button"]') || event.target
+        if($(target).dataset.type==='button'){
+            const value=JSON.parse($(target).dataset.value)
+            this.$emit('toolbar:applystyle',value)
+        }
     }
 }

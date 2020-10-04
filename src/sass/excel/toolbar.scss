@@ -9,7 +9,12 @@
     flex: 30px 0 0;
     @include btnHover;
     @include boxSizer(4px);
+    margin: 2px;
     align-content: center;
     text-align: center;
+    &.active{
+      background: $activecolor;
+      color: green;
+    }
   }
 }

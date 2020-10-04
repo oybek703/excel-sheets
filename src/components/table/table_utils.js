@@ -26,7 +26,10 @@ export function matrix(selectedCell,currentCell,root) {
 export function shouldNavigate(event) {
     const keys=['Enter','Tab','ArrowDown','ArrowRight','ArrowLeft','ArrowUp']
     const {key}=event
-    return keys.includes(key)
+    return (keys.includes(key)&& noShift(event))
+}
+export function noShift(event) {
+    return !event.shiftKey
 }
 export function navigate(key,{col,row}) {
     if (key === 'Enter' || key==='ArrowDown') {
@@ -34,13 +37,14 @@ export function navigate(key,{col,row}) {
     } else if (key === 'ArrowRight'|| key==='Tab') {
         col++
     } else if (key === 'ArrowUp') {
-        row--
+        row<=0 ? row=0 : row--
     } else if (key === 'ArrowLeft') {
-        col--
+        col<=0 ? col=0 : col--
     }
     return `${col}:${row}`
 }
 export function handleResize(event,root) {
+    return new Promise(resolve => {
     let newSize,delta,newWidth,newHeight
     const resizeType=$(event.target).dataset.resize
     const resizer=$(event.target)
@@ -73,5 +77,7 @@ export function handleResize(event,root) {
             resizer.css({width:'100%',bottom: 0})
             $(parent).css({height: newSize})
         }
-    }
+        resolve({id:$(parent).dataset[resizeType],value:newSize,type:resizeType})
+        }
+    })
 }
