@@ -26,7 +26,7 @@ const jsLoaders=(loader)=>{
 module.exports={
   mode: 'development',
   context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  entry: ['babel-polyfill', './index.js'],
   output: {
     filename: 'bundle.[hash:4].js',
     path: path.resolve(__dirname, 'dist'),

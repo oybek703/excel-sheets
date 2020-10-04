@@ -7,7 +7,10 @@ export class ExcelComponent extends DOMListener {
         this.name=options.name
         this.selection=new TableSelection()
         this.emitter=options.emitter
+        this.subscribe=options.subscribe || []
+        this.store=options.store
         this.unsubscribers=[]
+        // this.storeSub=null
         this.prepare()
     }
     prepare(){}
@@ -24,8 +27,19 @@ export class ExcelComponent extends DOMListener {
         const unsub=this.emitter.subscribe(event,fn)
         this.unsubscribers.push(unsub)
     }
+    $dispatch(action){
+        this.store.dispatch(action)
+    }
+    storeChanged(){}
+    isWatching(key){
+        return  this.subscribe.includes(key)
+    }
+    // $subscribe(fn){
+    //     this.storeSub=this.store.subscribe(fn)
+    // }
     destroy(){
         this.removeDomListeners()
         this.unsubscribers.forEach(unsub=>unsub())
+        // this.storeSub.unsubscribe()
     }
 }
