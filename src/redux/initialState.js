@@ -7,5 +7,5 @@ export const initialState={
     colState:{},
     rowState:{},
     data:{},
-    stylesState:{}
-}
+    stylesState:{},
+    lastUpdateDate:{day:new Date().toLocaleDateString(),time:new Date().toLocaleTimeString()}}

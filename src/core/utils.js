@@ -26,7 +26,7 @@ export function storage(key,value) {
     if(value){
         localStorage.setItem(key,JSON.stringify(value))
     }
-    return JSON.parse(localStorage.getItem(key)) || initialState
+    return JSON.parse(localStorage.getItem(key)) || clone(initialState)
 }
 export function isEqual(a,b) {
     if(typeof a==='object' && typeof b==='object'){
@@ -63,4 +63,16 @@ export function parseText(value) {
     }
     return value
 }
-
+export function storageName(param) {
+    return `excel:${param}`
+}
+export function clone(obj) {
+    return JSON.parse(JSON.stringify(obj))
+}
+export function groupInfo(state) {
+    console.group('Last updated sheet: ')
+    console.info(`Sheet name: ${state.title}`)
+    console.info(`Day: ${state.lastUpdateDate.day}`)
+    console.info(`Time: ${state.lastUpdateDate.time}`)
+    console.groupEnd()
+}

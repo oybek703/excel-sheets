@@ -53,6 +53,14 @@ class Dom {
         this.$el.focus()
         return this
     }
+    append(node){
+        if(Element.prototype.append){
+            this.$el.append(node)
+            return this
+        }
+        this.$el.appendChild(node)
+        return this
+    }
     text(text){
         if(typeof text!=='undefined'){
             this.$el.textContent=text
@@ -76,6 +84,10 @@ class Dom {
             acc[key]=this.$el.style[key]
             return acc
         },{})
+    }
+    clear(){
+        this.$el.innerHTML=''
+        return this
     }
 }
 export function $(selector) {

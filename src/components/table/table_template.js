@@ -54,7 +54,7 @@ function createCell(col,row) {
         data-id=${id}
         style='width:${width};${styles}'
         data-value="${data || ''}">
-            ${parseText(data || '')}
+            ${parseText(data || '') || ''}
         </div>
     `
     }

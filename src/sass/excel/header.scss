@@ -13,9 +13,11 @@
       @include boxSizer(5px);
       font-size: 1.6rem;
     }
-    &__buttons span{
+    &__buttons a{
         @include boxSizer(2px 7px);
         @include btnHover;
+        color:$textcolor ;
+        text-decoration: none;
     }
   }
 }

@@ -1,4 +1,4 @@
-import {applystyles, changestyles, changetext, changetitle, tableresize} from "@/redux/types";
+import {applystyles, changedate, changestyles, changetext, changetitle, tableresize} from "@/redux/types";
 class ActionCreator {
    static  create(type,data){
         return {
@@ -22,4 +22,7 @@ export function changeStyles(data) {
 }
 export function applyStyles(data) {
    return  ActionCreator.create(applystyles,data)
+}
+export function changeDate(data) {
+    return ActionCreator.create(changedate,data)
 }
