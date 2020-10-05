@@ -1,4 +1,4 @@
-import {applystyles, changestyles, changetext, changetitle, tableresize} from "@/redux/types";
+import {applystyles, changedate, changestyles, changetext, changetitle, tableresize} from "@/redux/types";
 export function rootReducer(state,action) {
     let prevState
      switch (action.type) {
@@ -21,6 +21,8 @@ export function rootReducer(state,action) {
                  prevState[id]={...prevState[id],...action.data.value}
              })
              return {...state,stylesState:prevState}
+         case changedate:
+             return {...state,lastUpdateDate:action.data}
          default:return  state
      }
 }

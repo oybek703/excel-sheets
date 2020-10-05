@@ -1,5 +1,6 @@
 const path=require('path');
 const HtmlWebpackPlugin=require('html-webpack-plugin');
+const webpack=require('webpack');
 const {CleanWebpackPlugin}=require('clean-webpack-plugin')
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 const CssMinimizerPlugin=require('css-minimizer-webpack-plugin');
@@ -51,6 +52,9 @@ module.exports={
           to: path.resolve(__dirname, 'dist/')
         }
       ]
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
   module: {
