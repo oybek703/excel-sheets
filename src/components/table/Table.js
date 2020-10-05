@@ -43,7 +43,7 @@ export class Table extends ExcelComponent{
     }
     toHTML() {
         const state=this.store.getState()
-        return createTable(500,state)
+        return createTable(100,state)
     }
     async resizeTable(event){
         const size= await handleResize(event,this.root)
