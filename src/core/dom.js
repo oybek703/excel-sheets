@@ -54,6 +54,9 @@ class Dom {
         return this
     }
     append(node){
+        if(node instanceof Dom){
+            this.$el.appendChild(node.$el)
+        }
         if(Element.prototype.append){
             this.$el.append(node)
             return this

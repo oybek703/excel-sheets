@@ -1,6 +1,6 @@
 import {Page} from "@/pages/Page";
 import {$} from "@core/dom";
-import {createList} from "@/pages/dashboard.funtions";
+import {createList} from "@/shared/dashboard.funtions";
 export class DashboardPage extends Page{
     getRoot() {
        const dashboard= $.create('div','dashboard')
