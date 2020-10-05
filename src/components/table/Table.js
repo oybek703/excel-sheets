@@ -43,7 +43,7 @@ export class Table extends ExcelComponent{
     }
     toHTML() {
         const state=this.store.getState()
-        return createTable(25,state)
+        return createTable(500,state)
     }
     async resizeTable(event){
         const size= await handleResize(event,this.root)
@@ -80,7 +80,7 @@ export class Table extends ExcelComponent{
                 preventDefault(event)
                 const {key}=event
                 const nextCellId=navigate(key,parse(id))
-                nextCell=$(this.root).find(`[data-id="${nextCellId}"]`)
+                nextCell=$(this.root).find(`[data-id="${nextCellId}"]`) || this.selection.current
                 this.selectCell(nextCell)
             } if(noShift(event)){
                 this.selectCell(nextCell)

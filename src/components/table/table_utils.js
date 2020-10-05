@@ -37,9 +37,9 @@ export function navigate(key,{col,row}) {
     } else if (key === 'ArrowRight'|| key==='Tab') {
         col++
     } else if (key === 'ArrowUp') {
-        row<=0 ? row=0 : row--
+        row--
     } else if (key === 'ArrowLeft') {
-        col<=0 ? col=0 : col--
+        col--
     }
     return `${col}:${row}`
 }
